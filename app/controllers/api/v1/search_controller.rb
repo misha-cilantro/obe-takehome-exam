@@ -13,7 +13,7 @@ class Api::V1::SearchController < ApplicationController
       return
     end
     
-    results = Rails.cache.fetch(name) do 
+    results = Rails.cache.fetch cache_key(name) do 
       characters = Rickmorty::Character.new
       search_result = characters.search(name) || []
   
@@ -27,5 +27,12 @@ class Api::V1::SearchController < ApplicationController
     end
     
     render json: results
+  end
+
+  private
+  def cache_key(name)
+    # we'll drop the cache once a day
+    date = DateTime.now.strftime("%d/%m/%Y")
+    "#{date} #{name}"
   end
 end
