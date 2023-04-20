@@ -12,9 +12,11 @@ This is accurate through season 6, but if this changes the app will be wrong for
 of time to update the API by then.
 
 * Caching
+
 Search data is cached once per day.
 
 * Ruby version
+
 Ruby 3.2.2
 
 `.tool-versions` file exists for those using asdf for ruby version management.
