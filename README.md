@@ -12,6 +12,8 @@ The name parameter is required. All other parameters are ignored. If no characte
 * Ruby version
 Ruby 3.2.2
 
+`.tool-versions` file exists for those using asdf for ruby version management.
+
 * System dependencies
 This uses barebones Rails 7. The only additional gem is `rickmorty`, so it should be pretty straightforward to set up.
 Note this app was generated with `--api` so there is no view rendering.
