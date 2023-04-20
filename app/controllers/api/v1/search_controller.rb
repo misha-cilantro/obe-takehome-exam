@@ -15,15 +15,15 @@ class Api::V1::SearchController < ApplicationController
     
     results = Rails.cache.fetch(name) do 
       characters = Rickmorty::Character.new
-      results = characters.search(name) || []
+      search_result = characters.search(name) || []
   
-      unless results.nil?
-        results.each do |character|
+      unless search_result.nil?
+        search_result.each do |character|
           character["seasons_appearing"] = EpisodeHelper::get_appearance_per_season(character)
         end        
       end
       
-      return results
+      search_result
     end
     
     render json: results
