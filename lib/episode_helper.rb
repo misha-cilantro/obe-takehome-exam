@@ -9,7 +9,18 @@ class EpisodeHelper
 
     seasons = {}
     episode_nums.each do |ep|
+      if ep < 2
+        season = 1
+      else
+        # offset due to 11 episode first seasons and count starts at 1
+        season = (ep - 2) / 10 + 1
+      end      
+        
+      unless seasons.has_key?(season)
+        seasons[season] = 0
+      end
       
+      seasons[season] += 1
     end
   end
 end
