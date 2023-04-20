@@ -25,4 +25,10 @@ class Api::V1::SearchControllerTest < ActionDispatch::IntegrationTest
     get api_v1_character_path
     assert_response :bad_request
   end
+
+  test "error if no results found" do
+    get api_v1_character_path(name: "this character does not exist")
+    assert_response :success
+    assert_equal JSON.parse(response.body), []
+  end
 end
