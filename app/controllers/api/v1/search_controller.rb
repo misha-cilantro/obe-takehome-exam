@@ -32,7 +32,8 @@ class Api::V1::SearchController < ApplicationController
   private
   def cache_key(name)
     # we'll drop the cache once a day
-    date = DateTime.now.strftime("%d/%m/%Y")
-    "#{date} #{name}"
+    date = DateTime.now.strftime("%d/%m/%Y %H")
+    half_hour = DateTime.now.minute >= 30 ? "30" : "0" # only change on the half hour
+    "#{date}:#{half_hour} #{name}"
   end
 end
