@@ -11,16 +11,14 @@ Note that in order to be responsive the app assumes that there are always 10 epi
 This is accurate through season 6, but if this changes the app will be wrong for later seasons... though ideally we'll have plenty
 of time to update the API by then.
 
-* Caching
-
+# Caching
 Search data is cached once per day.
 
-* Ruby version
-
+# Ruby version
 Ruby 3.2.2
 
 `.tool-versions` file exists for those using asdf for ruby version management.
 
-* System dependencies
+#System dependencies
 This uses barebones Rails 7. The only additional gem is `rickmorty`, so it should be pretty straightforward to set up.
 Note this app was generated with `--api` so there is no view rendering.
