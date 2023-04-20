@@ -1,3 +1,5 @@
+require "episode_helper"
+
 class Api::V1::SearchController < ApplicationController
   SUPPORTED_SEARCH_FIELDS = [
     "name"
@@ -16,6 +18,11 @@ class Api::V1::SearchController < ApplicationController
     
     characters = Rickmorty::Character.new
     results = characters.search(name)
+
+    results.each do |character|
+      character["seasons_appearing"] = EpisodeHelper::get_appearance_per_season(character)
+    end    
+    
     render json: results
   end
 end
